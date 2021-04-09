@@ -12,10 +12,10 @@
   <% else %>
     <span class="badge badge-secondary">
       <% if !current_user.under_stock_limit? %>
-        You can only track 10 stocks
+        You can only track 10 stocks.
       <% end %>
       <% if current_user.stock_already_tracked?(@stock.ticker) %>
-      this stock
+      This stock is already being tracked.
       <% end %>
     </span>
   <% end %>
