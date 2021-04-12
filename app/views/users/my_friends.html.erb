@@ -1,0 +1,34 @@
+<div class="container">
+<h1>Friend's List</h1>
+<span class="text-info">Friend Count: <%= current_user.friends.count %></span>
+
+
+ <div class="search-area">
+  <h3>Search Friends</h3>
+  <%= form_tag search_friends_path, remote: true, method: :get do %>
+  <div class="form-group row">
+    <div class="col-sm-9 no-right-padding">
+      <%= text_field_tag :friend, params[:friend], placeholder: "Name or Email", autofocus: true, class: 'form-control form-control-large' %>
+    </div>
+    <div class="col-sm-3 no-left-padding">
+      <%= button_tag type: :submit, class: "btn btn-outline-success" do %>
+      <%= fa_icon "search" %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
+<div id="result">
+
+</div> 
+
+
+<% if @my_friends.empty? %>
+  <h3> Maybe You Should Make Some Friends</h3>
+<% end %>
+
+
+<% if @my_friends %>
+<%= render 'friends/list' %>
+<% end %>
+</div>
